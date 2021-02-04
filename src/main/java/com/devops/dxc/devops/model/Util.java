@@ -10,10 +10,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;  
 //Jsonpath para leer el JSON de Miindcador
 import com.jayway.jsonpath.JsonPath;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
 public class Util {
+
+    private final static Logger LOGGER = Logger.getLogger("devops.subnivel.Control");
 
     /**
      * Método para cacular el 10% del ahorro en la AFP.  Las reglas de negocio se pueden conocer en 
@@ -52,9 +56,8 @@ public class Util {
 
         RestTemplate restTemplate = new RestTemplate();
         String result_json = restTemplate.getForObject(uri, String.class);
-
-        double uf = JsonPath.read(result_json, "$.serie[0].valor");
-
+        int uf_int = JsonPath.read(result_json, "$.serie[0].valor");
+        double uf = uf_int;
         return uf;
     }
 
