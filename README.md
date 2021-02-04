@@ -15,29 +15,29 @@
 * Abrir navegador: http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000
 
 ### Metodos API
-* Ruta Inicial : http://localhost:8082/rest/msdxc/
+###### Ruta Inicial : http://localhost:8082/rest/msdxc/
 
-* 10% : 
-Ruta: /dxc 
+###### * 10% : 
+> Ruta: /dxc 
 Parametros : sueldo, ahorro
 
-* obtenerUF :  
-Ruta /obtenerUF
+###### * obtenerUF :  
+> Ruta /obtenerUF
 
-* obtenerImpuesto : 
-Ruta: /obtenerImpuesto 
+###### * obtenerImpuesto : 
+> Ruta: /obtenerImpuesto 
 Parametros : sueldo, ahorro
 
-* obtenerSaldo : 
-Ruta: /obtenerSaldo 
-Parametros : sueldo, ahorro
+###### * obtenerSaldo : 
+> Ruta: /Obtenersaldo 
+Parametros : Sueldo, Ahorro
 
 ### Para poder leer el JSON de MiIndicador se cargo la dependencia de JSONPATH en POM.xml
-<dependency>
-	<groupId>com.jayway.jsonpath</groupId>
-	<artifactId>json-path</artifactId>
-	<version>2.2.0</version>
-</dependency>
+    <dependency>
+    	<groupId>com.jayway.jsonpath</groupId>
+    	<artifactId>json-path</artifactId>
+    	<version>2.2.0</version>
+    </dependency>
 
 ### Ruta puerto API en /src/main/resources/application.properties
 8082 , cambiar si afecta en algun puerto del cliente
