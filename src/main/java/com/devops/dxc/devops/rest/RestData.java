@@ -24,4 +24,32 @@ public class RestData {
         Dxc response = new Dxc(Integer.parseInt(ahorro), Integer.parseInt(sueldo));
 		return response;
 	}
+
+	
+	@GetMapping(path = "/obtenerUF", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody String getData(){
+		
+		LOGGER.log(Level.INFO, "< Trabajo DevOps - DXC > <Consulta Obtener UF del día>");
+		Dxc clase = new Dxc();
+		String response = String.valueOf(clase.getUf());
+		return response;
+	}
+
+	@GetMapping(path = "/obtenerImpuesto", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody Double getDataImp(@RequestParam(name = "sueldo") String sueldo, @RequestParam(name = "ahorro") String ahorro){
+		
+		LOGGER.log(Level.INFO, "< Trabajo DevOps - DXC > <Consulta Obtener Impuesto>");
+		Dxc response = new Dxc(Integer.parseInt(ahorro), Integer.parseInt(sueldo));
+		return response.getImpuesto();
+	}
+
+	
+	@GetMapping(path = "/obtenerSaldo", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody int getDataSaldo(@RequestParam(name = "sueldo") String sueldo, @RequestParam(name = "ahorro") String ahorro){
+		
+		LOGGER.log(Level.INFO, "< Trabajo DevOps - DXC > <Consulta Obtener Saldo>");
+		Dxc response = new Dxc(Integer.parseInt(ahorro), Integer.parseInt(sueldo));
+		return response.getSaldo();
+	}
+	
 }

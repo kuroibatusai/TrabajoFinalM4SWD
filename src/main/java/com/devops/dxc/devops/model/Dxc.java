@@ -11,35 +11,25 @@ public class Dxc implements Serializable{
 	
 	private int dxc;
 	private int saldo;
-	private int impuesto;
+	private double impuesto;
 	private int sueldo;
 	private int ahorro;
+	private double uf;
 
 	public Dxc(int ahorro, int sueldo){
-		this.ahorro = ahorro;
-		this.sueldo = sueldo;
+		this.setAhorro(ahorro);
+		this.setSueldo(sueldo);
+		this.setUf(Util.getUf());
+		this.setImpuesto(Util.getImpuesto(sueldo));
+		this.setSaldo(this.getAhorro() - (int) this.getImpuesto() - this.getDxc());
 	}
 
 	public Dxc() {
+		this.setUf(Util.getUf());
 	}
 
 	public int getDxc() {
 		return Util.getDxc(ahorro,sueldo);
-	}
-	public void setDxc(int dxc) {
-		this.dxc = dxc;
-	}
-	public int getSaldo() {
-		return saldo;
-	}
-	public void setSaldo(int saldo) {
-		this.saldo = saldo;
-	}
-	public int getImpuesto() {
-		return impuesto;
-	}
-	public void setImpuesto(int impuesto) {
-		this.impuesto = impuesto;
 	}
 
 	public int getSueldo() {
@@ -49,7 +39,7 @@ public class Dxc implements Serializable{
 	public void setSueldo(int sueldo) {
 		this.sueldo = sueldo;
 	}
-
+	
 	public int getAhorro() {
 		return ahorro;
 	}
@@ -57,4 +47,29 @@ public class Dxc implements Serializable{
 	public void setAhorro(int ahorro) {
 		this.ahorro = ahorro;
 	}
+
+	public double getUf() {
+		return uf;
+	}
+
+	public void setUf(double uf) {
+		this.uf = uf;
+	}
+
+	public double getImpuesto() {
+		return impuesto;
+	}
+
+	public void setImpuesto(double impuesto) {
+		this.impuesto = impuesto;
+	}
+
+	public int getSaldo(){
+		return saldo;
+	}
+
+	public void setSaldo(int saldo) {
+		this.saldo = saldo;
+	}
+
 }
