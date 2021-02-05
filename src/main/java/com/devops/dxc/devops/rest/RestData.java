@@ -1,5 +1,6 @@
 package com.devops.dxc.devops.rest;
 
+import com.devops.dxc.devops.model.Util;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.devops.dxc.devops.model.Dxc;
@@ -21,7 +22,7 @@ public class RestData {
 		
 		LOGGER.log(Level.INFO, "< Trabajo DevOps - DXC > <Consultado Diez por ciento>");
 		
-        Dxc response = new Dxc(Integer.parseInt(ahorro), Integer.parseInt(sueldo));
+        Dxc response = new Dxc(Integer.parseInt(ahorro), Integer.parseInt(sueldo), Util.getUf());
 		return response;
 	}
 
@@ -39,7 +40,7 @@ public class RestData {
 	public @ResponseBody Double getDataImp(@RequestParam(name = "sueldo") String sueldo, @RequestParam(name = "ahorro") String ahorro){
 		
 		LOGGER.log(Level.INFO, "< Trabajo DevOps - DXC > <Consulta Obtener Impuesto>");
-		Dxc response = new Dxc(Integer.parseInt(ahorro), Integer.parseInt(sueldo));
+		Dxc response = new Dxc(Integer.parseInt(ahorro), Integer.parseInt(sueldo), Util.getUf());
 		return response.getImpuesto();
 	}
 
@@ -48,7 +49,7 @@ public class RestData {
 	public @ResponseBody int getDataSaldo(@RequestParam(name = "sueldo") String sueldo, @RequestParam(name = "ahorro") String ahorro){
 		
 		LOGGER.log(Level.INFO, "< Trabajo DevOps - DXC > <Consulta Obtener Saldo>");
-		Dxc response = new Dxc(Integer.parseInt(ahorro), Integer.parseInt(sueldo));
+		Dxc response = new Dxc(Integer.parseInt(ahorro), Integer.parseInt(sueldo), Util.getUf());
 		return response.getSaldo();
 	}
 	
