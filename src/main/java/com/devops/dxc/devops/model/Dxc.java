@@ -1,15 +1,18 @@
 package com.devops.dxc.devops.model;
 
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Dxc implements Serializable{
+	
+	private final static Logger LOGGER = Logger.getLogger("devops.subnivel.Control");
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2988002029080131424L;
 	
-	private int dxc;
 	private int saldo;
 	private double impuesto;
 	private int sueldo;
@@ -20,8 +23,9 @@ public class Dxc implements Serializable{
 		this.setAhorro(ahorro);
 		this.setSueldo(sueldo);
 		this.setUf(uf);
-		this.setImpuesto(Util.getImpuesto(sueldo));
-		this.setSaldo(this.getAhorro() - (int) this.getImpuesto() - this.getDxc());
+		int retiro = this.getDxc();
+		this.setImpuesto(Util.getImpuesto(sueldo, retiro));
+		this.setSaldo(this.getAhorro() - retiro);
 	}
 
 	public Dxc() {
