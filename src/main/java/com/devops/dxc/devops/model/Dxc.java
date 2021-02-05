@@ -13,27 +13,41 @@ public class Dxc implements Serializable{
 	 */
 	private static final long serialVersionUID = -2988002029080131424L;
 	
+	private int dxc; //Retiro 10%
 	private int saldo;
 	private double impuesto;
 	private int sueldo;
 	private int ahorro;
 	private double uf;
+	private String fechaUf;
 
-	public Dxc(int ahorro, int sueldo, double uf){
+	public Dxc(int ahorro, int sueldo, String fechaUf){
 		this.setAhorro(ahorro);
 		this.setSueldo(sueldo);
-		this.setUf(uf);
-		int retiro = this.getDxc();
-		this.setImpuesto(Util.getImpuesto(sueldo, retiro));
-		this.setSaldo(this.getAhorro() - retiro);
+		this.setFechaUf(fechaUf);
+		this.setUf(Util.getUf(fechaUf)); // Recibo Fecha , busco la Uf y la almaceno 
+
+		//Guardar el 10% , Retiro
+		this.setDxc(Util.getDxc(ahorro,sueldo,uf)); // Ocupo la UF
+
+		//int retiro = this.getDxc(); // Con esto se duplicaba el metodo del profe ( getDxc ), asi que refactorice y corregi con la linea anterior
+		//la variable dxc es el retiro asi que la volvi a agregar y comente esta parte que hiciste y abajo coloque la versión modificada
+		//this.setImpuesto(Util.getImpuesto(sueldo, retiro));
+		//this.setSaldo(this.getAhorro() - retiro);
+
+		this.setImpuesto(Util.getImpuesto(sueldo, dxc));
+		this.setSaldo(this.getAhorro() - this.getDxc()); 
 	}
 
 	public Dxc() {
-		this.setUf(Util.getUf());
 	}
 
 	public int getDxc() {
-		return Util.getDxc(ahorro,sueldo,this.getUf());
+		return dxc;
+	}
+
+	public void setDxc(int dxc) {
+		this.dxc = dxc;
 	}
 
 	public int getSueldo() {
@@ -74,6 +88,14 @@ public class Dxc implements Serializable{
 
 	public void setSaldo(int saldo) {
 		this.saldo = saldo;
+	}
+
+	public String getFechaUf() {
+		return fechaUf;
+	}
+
+	public void setFechaUf(String fechaUf) {
+		this.fechaUf = fechaUf;
 	}
 
 }

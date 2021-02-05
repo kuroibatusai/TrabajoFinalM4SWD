@@ -24,7 +24,8 @@ public class Util {
 	 * @param sueldo
 	 * @return
 	 */
-	public static int getDxc(int ahorro, int sueldo, Double uf) {
+	public static int getDxc(int ahorro, int sueldo, double uf) {
+			
         double min = (35 * uf);
 		if (((ahorro * 0.1) / uf) > 150) {
 			return (int) (150 * uf);
@@ -35,7 +36,9 @@ public class Util {
 		} else {
 			return (int) (ahorro * 0.1);
 		}
+		
 	}
+
 
 	/**
 	 * Método que retorna el valor de la UF. Este método debe ser refactorizado por
@@ -44,17 +47,17 @@ public class Util {
 	 * 
 	 * @return
 	 */
-	public static Double getUf() {
+	public static Double getUf(String fechaUf) {
 
 		LOGGER.log(Level.INFO, "---- CALCULANDO LA UF DINAMICA ----");
 
 		// Obtener la fecha de Hoy
-		Date dt = new Date();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
-		String fecha_ayer = dateFormat.format(dt);
+		//Date dt = new Date();
+		//SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+		//String fecha_hoy = dateFormat.format(dt);
 
 		// Call MiNdicador API para UF Online
-		final String uri = "https://mindicador.cl/api/uf/" + fecha_ayer;
+		final String uri = "https://mindicador.cl/api/uf/" + fechaUf;
 
 		RestTemplate restTemplate = new RestTemplate();
 		String result_json = restTemplate.getForObject(uri, String.class);
@@ -62,6 +65,7 @@ public class Util {
 		JSONObject json = new JSONObject(result_json);
 		double uf = json.getJSONArray("serie").getJSONObject(0).getDouble("valor");
 		return uf;
+		
 	}
 
 	/**
@@ -71,22 +75,30 @@ public class Util {
 	 */
 	public static double getImpuesto(int sueldo, int retiro) {
 		//https://www.t13.cl/noticia/politica/segundo-retiro-del-10-calcula-cuanto-impuesto-deberias-pagar-segun-sueldo-12-12-2020
+		LOGGER.log(Level.INFO, "---- Obtener Impuesto ----");
+
 		//aprox 1.500.000 y 2.500.000
 		if (sueldo*12 >= 17864280 && sueldo*12 < 29773800) {
+			LOGGER.log(Level.INFO, "---- aprox 1.500.000 y 2.500.000 ----");
 			return retiro * 0.08;
 		//aprox 2.500.000 y 3.500.000
 		} else if (sueldo*12 >= 29773800 && sueldo*12 < 41600000) {
+			LOGGER.log(Level.INFO, "---- aprox 2.500.000 y 3.500.000 ----");
 			return retiro * 0.135;
 		//aprox 3.500.000 y 4.500.000
 		} else if (sueldo*12 >= 41600000 && sueldo*12 < 53500000) {
+			LOGGER.log(Level.INFO, "---- aprox 3.500.000 y 4.500.000 ----");
 			return retiro * 0.23;
 		//aprox 4.500.000 y 6.000.000
 		} else if (sueldo*12 >= 53500000 && sueldo*12 < 71400000) {
+			LOGGER.log(Level.INFO, "---- aprox 4.500.000 y 6.000.000 ----");
 			return retiro * 0.340;
 		//aprox 6.000.000
 		} else if (sueldo*12 >= 71400000) {
+			LOGGER.log(Level.INFO, "---- aprox 6.000.000 ----");
 			return retiro * 0.35;
 		}
+		LOGGER.log(Level.INFO, "---- 0 ----");
 		return 0;
 	}
 
