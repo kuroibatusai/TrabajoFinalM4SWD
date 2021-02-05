@@ -70,6 +70,7 @@ public class Util {
 	 * @return
 	 */
 	public static double getImpuesto(int sueldo, int retiro) {
+		//https://www.t13.cl/noticia/politica/segundo-retiro-del-10-calcula-cuanto-impuesto-deberias-pagar-segun-sueldo-12-12-2020
 		//aprox 1.500.000 y 2.500.000
 		if (sueldo*12 >= 17864280 && sueldo*12 < 29773800) {
 			return retiro * 0.08;
