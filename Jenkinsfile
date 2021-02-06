@@ -26,10 +26,6 @@ pipeline {
                 sh "ls -lha"
                 sh "npm install"
             }
-            steps {
-                sh "ls -lha"
-                sh "npm start"
-            }
         }
         //end run
         /*
