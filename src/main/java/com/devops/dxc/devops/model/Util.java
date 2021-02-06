@@ -58,6 +58,7 @@ public class Util {
 
 		// Call MiNdicador API para UF Online
 		final String uri = "https://mindicador.cl/api/uf/" + fechaUf;
+		LOGGER.log(Level.INFO, uri);
 
 		RestTemplate restTemplate = new RestTemplate();
 		String result_json = restTemplate.getForObject(uri, String.class);
@@ -65,7 +66,6 @@ public class Util {
 		JSONObject json = new JSONObject(result_json);
 		double uf = json.getJSONArray("serie").getJSONObject(0).getDouble("valor");
 		return uf;
-		
 	}
 
 	/**
