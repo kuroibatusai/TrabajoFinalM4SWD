@@ -2,6 +2,8 @@
 
 ### Requerimientos
 
+**Estos deben estar instalados globalmente en la máquina del desarrollador**
+
 - maven 3.6.3
 - Java 11
 - newman
@@ -65,6 +67,8 @@ Parametros : sueldo, ahorro, fechaUf
 Aplicación web de la calculadora 10% realizada como trabajo entregable para el módulo 4 del Diplomados Devops USACH.
 
 ### Requerimientos
+
+**Estos deben estar instalados globalmente en la máquina del desarrollador**
 
 - Node 12.13.0 o superior
 - NPM 6.14.8 o superior
