@@ -15,8 +15,10 @@ pipeline {
             }
         }
         stage('Probar Backend URL'){
-            sleep 20
-            sh "curl -X GET 'http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000&fechaUf=06-02-2021'"
+            steps {
+                sleep 20
+                sh "curl -X GET 'http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000&fechaUf=06-02-2021'"
+            }
         }
         //end run
         /*
