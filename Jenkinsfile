@@ -16,13 +16,12 @@ pipeline {
         }
         stage('Probar Backend URL'){
             steps {
-                sleep 20
                 sh "curl -X GET 'http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000&fechaUf=06-02-2021'"
             }
         }    
         stage('Iniciar Frontend'){
             steps {
-                sleep 20
+                sh "ls -lha"
                 sh "cd webapp/devops-calculadora-10-webapp"
                 sh "npm install && npm start"
             }
