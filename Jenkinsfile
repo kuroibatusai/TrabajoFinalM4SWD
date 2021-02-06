@@ -28,7 +28,7 @@ pipeline {
         stage('Test Jmeter') {
             steps {
                 sh '''
-                    /Users/kuroi/Desktop/apache-maven-3.6.3/bin/mvn verify -Pperformance
+                    ./mvnw verify -Pperformance
                 '''
             }
         }
