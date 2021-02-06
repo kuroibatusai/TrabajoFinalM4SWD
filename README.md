@@ -9,28 +9,28 @@
 * Background: nohup bash mvnw spring-boot:run &
 
 ### Probar Api Linux o Postman
-* curl -X GET 'http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000'
+* curl -X GET 'http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000&fechaUf=06-02-2021'
 
 ### Probar API
-* Abrir navegador: http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000
+* Abrir navegador: http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000&fechaUf=06-02-2021
 
 ### Metodos API
 ###### Ruta Inicial : http://localhost:8082/rest/msdxc/
 
 ###### * 10% : 
 > Ruta: /dxc 
-Parametros : sueldo, ahorro
+Parametros : sueldo, ahorro, fechaUf
 
 ###### * obtenerUF :  
 > Ruta /obtenerUF
 
 ###### * obtenerImpuesto : 
 > Ruta: /obtenerImpuesto 
-Parametros : sueldo, ahorro
+Parametros : sueldo, ahorro, fechaUf
 
 ###### * obtenerSaldo : 
-> Ruta: /Obtenersaldo 
-Parametros : Sueldo, Ahorro
+> Ruta: /ObtenerSaldo 
+Parametros : sueldo, ahorro, fechaUf
 
 ### Para poder leer el JSON de MiIndicador se cargo la dependencia de JSONPATH en POM.xml
     <dependency>
