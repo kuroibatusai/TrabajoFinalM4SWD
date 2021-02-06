@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh "ls -lha"
                 sh "cd webapp/devops-calculadora-10-webapp"
-                sh "npm install && npm start"
+                sh "npm install"
             }
         }
         //end run
