@@ -2,10 +2,15 @@
 
 ### Si haces un cambio y quieres ver que la API este todo ok
 
+````
 ./mvnw compile
+````
 
 ### Si deseas probar los test
+
+````
 ./mvnw test
+````
 
 ### Ejecutar API ( Nota : si la ejecutaste y haces cambio en dev, solo tira el comando compilar y la api se auto actualizará)
 * Local:      ./mvnw spring-boot:run
@@ -50,8 +55,6 @@ Parametros : sueldo, ahorro, fechaUf
 ### devops-calculadora-10-webapp
 
 Aplicación web de la calculadora 10% realizada como trabajo entregable para el módulo 4 del Diplomados Devops USACH.
-
-
 
 ### Requerimientos
 
