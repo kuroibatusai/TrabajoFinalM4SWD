@@ -1,5 +1,13 @@
 ## Backend
 
+### Requerimientos
+
+- maven 3.6.3
+- Java 11
+- newman
+- Selenium
+- Jmeter
+
 ### Si haces un cambio y quieres ver que la API este todo ok
 
 ````
