@@ -55,12 +55,10 @@ pipeline {
                 echo "Iniciar Test de Selenium"
                 sh '''
                     ls -lha
-                    rm -rf selenium_laboratorio
+                    rm -rf selenium_laboratorio || ls
                     git clone https://github.com/michellobo/selenium_laboratorio
                     ls -lha
                     cd selenium_laboratorio
-                    ls -lha
-                    sudo chmod -R 777 target
                     ls -lha
                     ./mvnw clean compile
                     ./mvnw test
