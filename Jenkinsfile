@@ -21,12 +21,14 @@ pipeline {
                 sh "curl -X GET 'http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000&fechaUf=06-02-2021'"
             }
         }
+        /*
         stage('Probar Backend JUnit'){
             steps {
                 echo "Probar Backend JUnit"
                 sh "./mvnw test"
             }
         }
+        */
         stage('Instalar Frontend'){
             steps {
                 echo "Instalar Frontend"
