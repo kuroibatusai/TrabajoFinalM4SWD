@@ -34,7 +34,7 @@ pipeline {
                     ls -lha
                     cd webapp/devops-calculadora-10-webapp
                     ls -lha
-                    nohup npm start
+                    nohup npm start &
                     sleep 20
                 '''
             }
@@ -68,7 +68,8 @@ pipeline {
                 echo "Ejecutar NewMan"
                 //sh "./mvnw.cmd clean compile -e test"
                 sh '''
-                    ls -lha                    
+                    ls -lha
+                    newman postman/DEVOPS - Calc 10.postman_collection.json                    
                 '''
             }
         }
