@@ -47,7 +47,7 @@ pipeline {
                     ls -lha
                     cd webapp/devops-calculadora-10-webapp
                     ls -lha
-                    nohup bash npm start &
+                    nohup npm start &
                     sleep 20
                 '''
             }
