@@ -81,7 +81,7 @@ pipeline {
                 echo "Ejecutar NewMan"
                 sh '''
                     ls -lha
-                    newman postman/DEVOPS - Calc 10.postman_collection.json                    
+                    newman 'postman/DEVOPS - Calc 10.postman_collection.json'                    
                 '''
             }
         }
