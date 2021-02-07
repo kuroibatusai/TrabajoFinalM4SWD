@@ -3,28 +3,27 @@ pipeline {
 
     stages {
         stage('Contruir Backend') {
-            echo "Contruir Backend"
             steps {
+                echo "Contruir Backend"
                 sh "./mvnw clean compile -e"
             }
         }
         stage('Iniciar Backend') {
-            echo "Iniciar Backend"
-
             steps {
+                echo "Iniciar Backend"
                 sh "nohup bash mvnw spring-boot:run &"
                 sleep 20
             }
         }
         stage('Probar Backend URL'){
-            echo "Probar Backend URL"
             steps {
+                echo "Probar Backend URL"
                 sh "curl -X GET 'http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000&fechaUf=06-02-2021'"
             }
         }
         stage('Probar Backend JUnit'){
-            echo "Probar Backend JUnit"
             steps {
+                echo "Probar Backend JUnit"
                 sh "./mvnw test"
             }
         }
