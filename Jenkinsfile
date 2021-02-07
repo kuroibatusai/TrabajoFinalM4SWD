@@ -63,9 +63,9 @@ pipeline {
                 '''
             }
         }
-        stage('Instalar NewMan') {
+        stage('Ejecutar NewMan') {
             steps {
-                echo "Instalar NewMan"
+                echo "Ejecutar NewMan"
                 //sh "./mvnw.cmd clean compile -e test"
                 sh '''
                     ls -lha                    
