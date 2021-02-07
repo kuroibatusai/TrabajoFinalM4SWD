@@ -65,15 +65,6 @@ pipeline {
                 '''
             }
         }
-        stage('Instalar NewMan') {
-            steps {
-                echo "Instalar NewMan"
-                sh '''
-                    ls -lha
-                    npm install -g newman
-                '''
-            }
-        }
         stage('Ejecutar NewMan') {
             steps {
                 echo "Ejecutar NewMan"
