@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "3256366a-00b2-42c4-911f-aa0f166efa68",
-		"name": "DEVOPS - Calc 10",
+		"_postman_id": "8e6c70b1-0484-4b8f-83cd-87e624a3c5b0",
+		"name": "team5",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -12,6 +12,8 @@
 					"listen": "test",
 					"script": {
 						"exec": [
+							"const jsonData = pm.response.json();",
+							"",
 							"pm.test(\"Respuesta 200 válida\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
@@ -52,23 +54,29 @@
 							"});",
 							"",
 							"pm.test(\"Si el saldo es menor a 35 UF el retiro debe ser igual al saldo\", function () {",
-							"    if (pm.request.url.query.toObject().ahorro < 35 * pm.globals.get(\"variable_key\")) {",
-							"        pm.expect(responseJson.dxc).to.eql(pm.request.url.query.toObject().ahorro);",
+							"    if (pm.request.url.query.toObject().ahorro < 35 * pm.globals.get(\"uf\")) {",
+							"        pm.expect(pm.response.json().dxc).to.eql(pm.request.url.query.toObject().ahorro);",
 							"    }",
 							"});",
 							"",
 							"pm.test(\"Impuesto = 0 si el sueldo < 1.500.000 \", function () {",
 							"    if (pm.request.url.query.toObject().sueldo * 12 < 17864280) {",
-							"        pm.expect(responseJson.impuesto).to.eql(0.0);",
+							"        pm.expect(jsonData.impuesto).to.eql(0.0);",
 							"    }",
 							"});",
 							"",
 							"pm.test(\"El retiro no puede ser mayor a 150 UF\", function () {",
-							"    pm.expect(responseJson.dxc).to.lessThan(150 * pm.globals.get(\"variable_key\"));",
+							"    var uf = 151 * pm.globals.get(\"uf\")",
+							"    console.log(uf);",
+							"    console.log(\"calculo\");",
+							"    console.log(jsonData.dxc);",
+							"    pm.expect(jsonData.dxc).to.lessThan(uf);",
 							"});",
 							"",
-							"pm.test(\"La respuesta debe ser bajo 5000 ms\", function () { ",
-							"    pm.expect(pm.response.responseTime).to.be.below(5000); ",
+							"",
+							"",
+							"pm.test(\"La respuesta debe ser bajo 5000 ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(5000);",
 							"});",
 							"",
 							""
@@ -80,7 +88,7 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.globals.set(\"uf\", \"29137.81\");"
+							"pm.globals.set(\"uf\", \"29135.0\");"
 						],
 						"type": "text/javascript"
 					}
@@ -90,7 +98,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8082/rest/msdxc/dxc/?ahorro=45000000&sueldo=4900000&fechaUf=04-07-2020",
+					"raw": "http://localhost:8082/rest/msdxc/dxc/?ahorro=45000000&sueldo=4900000&fechaUf=04-02-2021",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -113,7 +121,7 @@
 						},
 						{
 							"key": "fechaUf",
-							"value": "04-07-2020"
+							"value": "04-02-2021"
 						}
 					]
 				}
