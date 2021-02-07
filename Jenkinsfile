@@ -42,7 +42,6 @@ pipeline {
         stage('Iniciar Test Selenium') {
             steps {
                 echo "Iniciar Test de Selenium"
-                //sh "./mvnw.cmd clean compile -e test"
                 sh '''
                     ls -lha
                     git clone https://github.com/michellobo/selenium_laboratorio
@@ -56,7 +55,6 @@ pipeline {
         stage('Instalar NewMan') {
             steps {
                 echo "Instalar NewMan"
-                //sh "./mvnw.cmd clean compile -e test"
                 sh '''
                     ls -lha
                     npm install -g newman
@@ -66,7 +64,6 @@ pipeline {
         stage('Ejecutar NewMan') {
             steps {
                 echo "Ejecutar NewMan"
-                //sh "./mvnw.cmd clean compile -e test"
                 sh '''
                     ls -lha
                     newman postman/DEVOPS - Calc 10.postman_collection.json                    
