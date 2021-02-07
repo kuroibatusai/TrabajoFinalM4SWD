@@ -3,23 +3,34 @@ pipeline {
 
     stages {
         stage('Contruir Backend') {
+            echo "Contruir Backend"
             steps {
                 sh "./mvnw clean compile -e"
             }
         }
         stage('Iniciar Backend') {
+            echo "Iniciar Backend"
+
             steps {
                 sh "nohup bash mvnw spring-boot:run &"
                 sleep 20
             }
         }
         stage('Probar Backend URL'){
+            echo "Probar Backend URL"
             steps {
                 sh "curl -X GET 'http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000&fechaUf=06-02-2021'"
             }
         }
+        stage('Probar Backend JUnit'){
+            echo "Probar Backend JUnit"
+            steps {
+                sh "./mvnw test"
+            }
+        }
         stage('Instalar Frontend'){
             steps {
+                echo "Instalar Frontend"
                 sh '''
                     ls -lha
                     cd webapp/devops-calculadora-10-webapp
@@ -30,6 +41,7 @@ pipeline {
         }
         stage('Iniciar Frontend'){
             steps {
+                echo "Iniciar Frontend"
                 sh '''
                     ls -lha
                     cd webapp/devops-calculadora-10-webapp
@@ -44,6 +56,7 @@ pipeline {
                 echo "Iniciar Test de Selenium"
                 sh '''
                     ls -lha
+                    rm -rf selenium_laboratorio
                     git clone https://github.com/michellobo/selenium_laboratorio
                     ls -lha
                     cd selenium_laboratorio
