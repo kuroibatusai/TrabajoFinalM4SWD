@@ -47,8 +47,8 @@ pipeline {
                     git clone https://github.com/michellobo/selenium_laboratorio
                     ls -lha
                     cd selenium_laboratorio
-                    ./mvnw clean compile
-                    ./mvnw test
+                    mvn clean compile
+                    mvn test
                 '''
             }
         }
