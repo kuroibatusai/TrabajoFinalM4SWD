@@ -22,10 +22,12 @@ pipeline {
         */
         stage('Instalar Frontend'){
             steps {
-                sh "ls -lha"
-                sh "cd webapp"
-                sh "ls -lha"
-                sh "npm install"
+                sh '''
+                    ls -lha
+                    cd webapp
+                    ls -lha
+                    npm install
+                '''
             }
         }
         stage('Iniciar Frontend'){
