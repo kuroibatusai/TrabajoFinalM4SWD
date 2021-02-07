@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     stages {
-        /*
-        stage('Build') {
+        stage('Contruir Backend') {
             steps {
                 sh "./mvnw clean compile -e"
             }
@@ -19,7 +18,6 @@ pipeline {
                 sh "curl -X GET 'http://localhost:8082/rest/msdxc/dxc?sueldo=4900000&ahorro=45000000&fechaUf=06-02-2021'"
             }
         }
-        */
         stage('Instalar Frontend'){
             steps {
                 sh '''
@@ -36,24 +34,43 @@ pipeline {
                     ls -lha
                     cd webapp/devops-calculadora-10-webapp
                     ls -lha
-                    npm start
+                    nohup npm start
+                    sleep 20
                 '''
             }
         }
-        //end run
-        /*
-        stage('test') {
+        stage('Iniciar Test Selenium') {
             steps {
-                sh "./mvnw.cmd clean test -e"
-            }
-        }
-        stage('Test Jmeter') {
-            steps {
+                echo "Iniciar Test de Selenium"
+                //sh "./mvnw.cmd clean compile -e test"
                 sh '''
-                    ./mvnw verify -Pperformance
+                    ls -lha
+                    git clone https://github.com/michellobo/selenium_laboratorio
+                    ls -lha
+                    cd selenium_laboratorio
+                    ./mvnw clean compile
+                    ./mvnw test
                 '''
             }
         }
-        */
+        stage('Instalar NewMan') {
+            steps {
+                echo "Instalar NewMan"
+                //sh "./mvnw.cmd clean compile -e test"
+                sh '''
+                    ls -lha
+                    npm install -g newman
+                '''
+            }
+        }
+        stage('Instalar NewMan') {
+            steps {
+                echo "Instalar NewMan"
+                //sh "./mvnw.cmd clean compile -e test"
+                sh '''
+                    ls -lha                    
+                '''
+            }
+        }
     }
 }
