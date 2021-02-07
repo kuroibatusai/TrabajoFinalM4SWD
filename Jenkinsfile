@@ -62,8 +62,8 @@ pipeline {
                     ls -lha
                     cd selenium_laboratorio
                     ls -lha
-                    mvn clean compile
-                    mvn test
+                    ./mvnw clean compile
+                    ./mvnw test
                 '''
             }
         }
