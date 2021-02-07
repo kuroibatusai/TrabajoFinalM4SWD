@@ -24,7 +24,7 @@ pipeline {
             steps {
                 sh '''
                     ls -lha
-                    cd webapp
+                    cd webapp/devops-calculadora-10-webapp
                     ls -lha
                     npm install
                 '''
@@ -32,8 +32,12 @@ pipeline {
         }
         stage('Iniciar Frontend'){
             steps {
-                sh "ls -lha"
-                sh "npm start"
+                sh '''
+                    ls -lha
+                    cd webapp/devops-calculadora-10-webapp
+                    ls -lha
+                    npm start
+                '''
             }
         }
         //end run
