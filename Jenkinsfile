@@ -15,7 +15,6 @@ pipeline {
                 sleep 20
             }
         }
-        /*        
         stage('Probar Backend URL'){
             steps {
                 echo "Probar Backend URL"
@@ -28,7 +27,6 @@ pipeline {
                 sh "./mvnw test"
             }
         }
-        */
         stage('Instalar Frontend'){
             steps {
                 echo "Instalar Frontend"
@@ -52,7 +50,6 @@ pipeline {
                 '''
             }
         }
-        /*
         stage('Iniciar Test Selenium') {
             steps {
                 echo "Iniciar Test de Selenium"
@@ -68,7 +65,6 @@ pipeline {
                 '''
             }
         }
-        */
         stage('Instalar NewMan') {
             steps {
                 echo "Instalar NewMan"
