@@ -52,6 +52,7 @@ pipeline {
                 '''
             }
         }
+        /*
         stage('Iniciar Test Selenium') {
             steps {
                 echo "Iniciar Test de Selenium"
@@ -67,6 +68,7 @@ pipeline {
                 '''
             }
         }
+        */
         stage('Instalar NewMan') {
             steps {
                 echo "Instalar NewMan"
