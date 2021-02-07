@@ -22,7 +22,7 @@ pipeline {
         stage('Instalar Frontend'){
             steps {
                 sh "ls -lha"
-                sh "cd webapp/devops-calculadora-10-webapp"
+                sh "cd ./webapp/devops-calculadora-10-webapp"
                 sh "ls -lha"
                 sh "npm install"
             }
