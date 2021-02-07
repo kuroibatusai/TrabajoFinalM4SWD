@@ -60,6 +60,8 @@ pipeline {
                     ls -lha
                     cd selenium_laboratorio
                     ls -lha
+                    sudo chmod -R 777 target
+                    ls -lha
                     ./mvnw clean compile
                     ./mvnw test
                 '''
